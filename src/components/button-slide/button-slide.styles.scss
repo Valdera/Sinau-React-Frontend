@@ -19,6 +19,7 @@
     height: 1.5rem;
     transition: all .4s ease-in-out;
     border-radius: 20px;
+    animation: moveInLeft 1s ease-out;
 }
 
 .btn span {
