@@ -1,6 +1,6 @@
 @import '../../sass/main.scss';
 
-.btn {
+.btn-slide {
     border: none;
     display: block;
     text-align: center;
@@ -22,21 +22,21 @@
     animation: moveInLeft 1s ease-out;
 }
 
-.btn span {
+.btn-slide span {
     position: relative;
     z-index: 1;
 }
 
-.btn:hover {
+.btn-slide:hover {
     color: #fff;
     transform: scale(1.05) translateY(0.2rem);
 }
 
-.btn:active {
+.btn-slide:active {
     transform: scale(0.95);
 }
 
-.btn:after {
+.btn-slide:after {
     content: "";
     position: absolute;
     left: 0;
@@ -50,7 +50,7 @@
     transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
 
-.btn:hover:after {
+.btn-slide:hover:after {
     -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }

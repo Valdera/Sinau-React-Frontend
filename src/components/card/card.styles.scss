@@ -1,0 +1,184 @@
+@import '../../sass/main.scss';
+
+.card {
+    &:not(:last-child) {
+        margin-right: 10rem;
+    }
+
+    font-family: 'Lato',
+    sans-serif;
+    perspective: 250rem;
+    -moz-perspective: 250rem;
+    position: relative;
+    height: 45rem;
+    width: 30rem;
+
+    &__side {
+        height: 45rem;
+        transition: all 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+
+            &-ui {
+                background-image: linear-gradient(to right bottom,
+                        $color-univ-indo-light,
+                        $color-univ-indo-dark);
+            }
+
+            &-ugm {
+                background-image: linear-gradient(to right bottom,
+                        $color-univ-gajah-light,
+                        $color-univ-gajah-dark);
+            }
+
+            &-utbk {
+                background-image: linear-gradient(to right bottom,
+                        $color-utbk-light,
+                        $color-utbk-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        overflow: hidden;
+
+        &-ui {
+            background-image: linear-gradient(to right bottom,
+                    $color-univ-indo-light,
+                    $color-univ-indo-dark),
+                url(../../assets/UniversitasIndonesia.jpeg);
+        }
+
+        &-ugm {
+            background-image: linear-gradient(to right bottom,
+                    $color-univ-gajah-light,
+                    $color-univ-gajah-dark),
+                url(../../assets/UniversitasGajahmada.jpg);
+        }
+
+        &-utbk {
+            background-image: linear-gradient(to right bottom,
+                    $color-utbk-light,
+                    $color-utbk-dark),
+                url(../../assets/utbk.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 17rem;
+        right: 1rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        //-webkit-box-decoration-break: clone;
+        //box-decoration-break: clone;
+        overflow: hidden;
+        border: none;
+        backface-visibility: hidden;
+
+        &-ui {
+            background-image: linear-gradient(to right bottom,
+                    $color-univ-indo-light,
+                    $color-univ-indo-dark),
+                url(../../assets/UniversitasIndonesia.jpeg);
+        }
+
+        &-ugm {
+            background-image: linear-gradient(to right bottom,
+                    $color-univ-gajah-light,
+                    $color-univ-gajah-dark),
+                url(../../assets/UniversitasGajahmada.jpg);
+        }
+
+        &-utbk {
+            background-image: linear-gradient(to right bottom,
+                    $color-utbk-light,
+                    $color-utbk-dark),
+                url(../../assets/utbk.jpg);
+        }
+    }
+
+    &__details {
+        padding: 1rem 3rem;
+        margin-top: 0.5rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+                color: $color-grey-dark-1;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 8rem;
+        color: $color-white;
+    }
+
+    &__price-only {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+}
