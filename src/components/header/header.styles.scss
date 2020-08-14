@@ -1,1 +1,12 @@
 @import '../../sass/main.scss';
+
+.wave {
+    margin-top: -7rem;
+
+    &__svg {
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+        object-fit: cover;
+    }
+}

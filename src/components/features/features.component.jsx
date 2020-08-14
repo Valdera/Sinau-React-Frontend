@@ -8,7 +8,9 @@ function Features() {
   return (
     <div className="features">
       <div className="u-center-text u-margin-bottom-big">
-        <h2 className="heading-secondary">Paket Try Out Ujian</h2>
+        <h2 className="heading-secondary heading-secondary--purple">
+          Paket Try Out Ujian
+        </h2>
       </div>
       <div className="card-container">
         <Card

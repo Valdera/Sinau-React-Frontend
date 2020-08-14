@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderContainer from '../header-container/header-container.component';
-import Wave from '../wave/wave.component';
+import { ReactComponent as Wave } from '../../assets/wave-1.svg';
 
 import './header.styles.scss';
 
@@ -9,7 +9,9 @@ class Header extends Component {
     return (
       <div>
         <HeaderContainer />
-        <Wave />
+        <div className="wave">
+          <Wave className="wave__svg" />
+        </div>
       </div>
     );
   }

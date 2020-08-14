@@ -1,0 +1,30 @@
+@import '../../sass/main.scss';
+
+.loginpage {
+    background-image: linear-gradient(to right,
+            rgba($color-primary-3, 1),
+            rgba($color-tertiary-3, 1));
+    width: 100vw;
+    height: 90vh;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login {
+    height: 75vh;
+    flex: 0 0 35%;
+    background-color: greenyellow;
+    margin-right: 14rem;
+    border-radius: 20px;
+
+}
+
+.signup {
+    height: 75vh;
+    background-color: ivory;
+    flex: 0 0 35%;
+    border-radius: 20px;
+}

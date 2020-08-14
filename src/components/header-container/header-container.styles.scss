@@ -8,14 +8,11 @@
   align-items: center;
   position: relative;
   height: 70vh;
-  background-image: linear-gradient(
-    to right,
-    rgba($color-primary-3, 1),
-    rgba($color-tertiary-3, 1)
-  );
+  background-image: linear-gradient(to right,
+      rgba($color-primary-3, 1),
+      rgba($color-tertiary-3, 1));
   background-size: cover;
   background-position: top;
-  // clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
 
   &__text-box {
     margin-left: 15rem;

@@ -5,11 +5,13 @@
     margin-bottom: 6rem;
 
     &--main {
-        font-family: 'Roboto Slab';
         display: block;
-        font-size: 7rem;
-        font-weight: 600;
-        letter-spacing: 1rem;
+        font-family: Anton;
+        text-shadow: -5px -5px 0 rgba(0, 0, 0, 0.2);
+        font-size: 10rem;
+        letter-spacing: .5rem;
+        color: $color-grey-light-1;
+        font-weight: 400;
         animation-name: moveInLeft;
         animation-duration: 1s;
         animation-timing-function: ease-out;
@@ -26,17 +28,28 @@
 }
 
 .heading-secondary {
-    font-size: 3.5rem;
+    font-family: 'Baloo Tamma 2';
+    font-size: 6rem;
     text-transform: uppercase;
     font-weight: 700;
     display: inline-block;
-    background-image: linear-gradient(to right,
-            rgba($color-primary-3, 1),
-            rgba($color-tertiary-3, 1));
     -webkit-background-clip: text;
+
     color: transparent;
     transition: all .2s;
     letter-spacing: 2px;
+
+    &--purple {
+        background-image: linear-gradient(to right,
+                rgba($color-primary-3, 1),
+                rgba($color-tertiary-3, 1));
+
+    }
+
+    &--pink {
+        background-image: linear-gradient(to right,
+                rgba($color-secondary-5, 1), rgba($color-secondary-4, 1));
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
