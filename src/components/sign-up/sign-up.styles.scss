@@ -1,0 +1,49 @@
+@import '../../sass/main.scss';
+
+.sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 3rem;
+    margin-top: 2rem;
+
+    &__form>* {
+        animation: moveInLeft 1s ease-out;
+    }
+
+    &__form {
+        position: relative;
+    }
+
+
+    &__button {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+
+    }
+
+    &__title {
+        font-family: Poppins;
+        color: $color-grey-dark-2;
+        animation: moveInLeft 1s ease-out;
+    }
+
+    &__sub {
+        font-family: Poppins;
+        color: $color-grey-dark-2;
+        animation: moveInLeft 1s ease-out;
+    }
+}
+
+
+.secure__svg-box {
+    position: absolute;
+    top: 5rem;
+    right: -25rem;
+}
+
+.secure__svg {
+    height: 13rem;
+    width: 100%;
+}

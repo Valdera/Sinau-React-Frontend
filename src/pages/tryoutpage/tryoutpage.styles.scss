@@ -1,86 +1,21 @@
 @import '../../sass/main.scss';
 
 .tryout {
-    position: relative;
-}
-
-.section-about {
-    background-color: $color-white;
-    width: 100%;
+    background-image: linear-gradient(to right,
+            rgba($color-primary-3, 1),
+            rgba($color-tertiary-3, 1));
     height: 100vh;
-
-    &__header {
-        background-image: linear-gradient(to right,
-                rgba($color-primary-3, 1),
-                rgba($color-tertiary-3, 1));
-        height: 22%;
-        z-index: 1;
-    }
-
-    &__svg {
-        margin-top: -5rem;
-    }
-
-    &__text-box {
-        margin-left: 3rem;
-        margin-top: -12rem;
-    }
-
-    &__heading {
-        font-family: Anton;
-        font-size: 4rem;
-        letter-spacing: .5rem;
-    }
-
-    &__title {
-        position: absolute;
-        width: 80rem;
-        height: 15rem;
-        top: 1.5rem;
-        left: 8rem;
-
-        &--main {
-            font-family: Anton;
-            text-shadow: -5px -5px 0 rgba(0, 0, 0, 0.2);
-            font-size: 10rem;
-            letter-spacing: .1rem;
-            color: $color-grey-light-1;
-            font-weight: 400;
-            margin-bottom: -3rem;
-        }
-
-        &--sub {
-            font-family: Nunito;
-            font-weight: 600;
-            font-size: 2rem;
-            color: $color-grey-light-1;
-            padding-left: 1rem;
-        }
-    }
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.section-info {
-    position: absolute;
-    background-color: $color-grey-dark-2;
-    width: 30%;
-    height: 94%;
-    z-index: 10;
-    top: 3%;
-    right: 1%;
+.section-tryout {
+    margin-top: 5%;
+    width: 80%;
+    height: 80%;
     border-radius: 20px;
-    box-shadow: 0 2rem 4rem rgba($color-black, .23);
-
-    &__img {
-        width: 86%;
-        margin-left: 7%;
-        margin-top: 17%;
-        height: 40%;
-
-        &--svg {
-            width: 100%;
-            height: 23rem;
-        }
-
-    }
+    background-color: $color-white;
+    display: flex;
+    box-shadow: 0 2rem 4rem rgba($color-black, .4);
 }

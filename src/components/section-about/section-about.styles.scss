@@ -1,0 +1,43 @@
+@import '../../sass/main.scss';
+
+
+.section-about {
+    &__text {
+        height: 25%;
+        background-color: $color-white;
+        padding-left: 3rem;
+        border-bottom: $color-black solid 1px;
+        border-top-left-radius: 20px;
+    }
+
+    &__desc {
+        flex: 0 0 70%;
+    }
+
+
+    &__text--main {
+        height: 70%;
+
+        h1 {
+            font-family: Poppins;
+            font-size: 7rem;
+            color: $color-grey-dark-2;
+            font-weight: 600;
+            margin-bottom: -3rem;
+        }
+    }
+
+    &__text--sub {
+        padding-left: 1rem;
+
+        p {
+            font-size: 2rem;
+            font-family: Nunito;
+        }
+    }
+
+    &__tabs {
+        padding-top: 2.5rem;
+        padding-left: 6.2rem;
+    }
+}

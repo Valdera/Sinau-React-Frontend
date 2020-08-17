@@ -17,7 +17,9 @@ function HeaderContainer() {
             deserunt mollit anim id est laborum.
           </span>
         </h1>
-        <ButtonSlide>Try out</ButtonSlide>
+        <div className="header__button">
+          <ButtonSlide>Try out</ButtonSlide>
+        </div>
       </div>
       <div className="header__svg-box">
         <LearningSvg className="header__svg" />

@@ -1,0 +1,31 @@
+@import '../../sass/main.scss';
+
+.btn-text {
+
+    &,
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        color: $color-secondary-4;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        transition: all .4s ease-out;
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: $color-secondary-4;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}

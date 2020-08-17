@@ -1,0 +1,71 @@
+@import '../../sass/main.scss';
+
+.form-radio {
+    margin-top: 3.3rem;
+    position: relative;
+
+    &__group {
+        display: inline-block;
+    }
+
+    &__name {
+        font-size: 1.3rem;
+        font-family: Poppins;
+        font-weight: 400;
+        position: absolute;
+        top: -2.4rem;
+        left: 0;
+        opacity: 0;
+        color: $color-secondary-4;
+        transition: opacity 0.2s;
+    }
+
+    &__label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 3.5rem;
+        text-transform: uppercase;
+    }
+
+    &__button {
+        height: 2rem;
+        width: 2rem;
+        border: 5px solid $color-secondary-4;
+        border-radius: 50%;
+        position: absolute;
+        top: -0.3rem;
+        left: 0;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            background-color: $color-secondary-4;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__input:checked~&__label &__button::after {
+        opacity: 1;
+    }
+
+    &__input:checked~&__label &__button::after {
+        opacity: 1;
+    }
+
+    &__input:checked~&__name {
+        opacity: 1;
+    }
+}

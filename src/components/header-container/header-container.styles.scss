@@ -19,6 +19,10 @@
     margin-bottom: 3rem;
   }
 
+  &__button {
+    animation: moveInLeft 1s ease-out;
+  }
+
   &__decoration {
     position: absolute;
     top: 0;

@@ -1,0 +1,53 @@
+@import '../../sass/main.scss';
+
+.form-input {
+    &__group {
+        position: relative;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    &__input {
+        height: 0.7rem;
+        background: none;
+        background-color: rgba($color-white, 0.5);
+        color: $color-black;
+        font-size: 1.5rem;
+        padding: 1.5rem 2rem;
+        display: block;
+        border: $color-grey-dark-2 .1rem solid;
+        border-radius: 0.2rem;
+
+        transition: all 0.3s ease-out;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+            border-bottom: 3px solid #55c57a;
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid #ff7730;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__label {
+        font-size: 1.3rem;
+        font-family: Poppins;
+        font-weight: 400;
+        display: block;
+        color: $color-secondary-4;
+        transition: all 0.3s;
+    }
+
+    &__input:placeholder-shown+&__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1) translateY(3rem);
+    }
+}

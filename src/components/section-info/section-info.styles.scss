@@ -1,0 +1,54 @@
+@import '../../sass/main.scss';
+
+
+.section-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 0 0 30%;
+    background-color: $color-grey-dark-2;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+
+    &__img {
+        margin-top: -10rem;
+
+        &--svg {
+            padding-left: 7%;
+            padding-top: 5%;
+            width: 86%;
+            height: 25rem;
+        }
+    }
+
+    &__text--main {
+        font-family: Poppins;
+        font-size: 3rem;
+        padding-top: 1rem;
+        color: #F2F2F2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__text--sub {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Nunito;
+        font-size: 5rem;
+        font-weight: 300;
+        color: #F2F2F2
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__button {
+        margin-top: 4rem;
+    }
+}

@@ -14,17 +14,17 @@
 }
 
 .login {
-    height: 75vh;
+    height: 78vh;
     flex: 0 0 35%;
-    background-color: greenyellow;
+    background-color: $color-white;
     margin-right: 14rem;
     border-radius: 20px;
 
 }
 
 .signup {
-    height: 75vh;
-    background-color: ivory;
+    height: 78vh;
+    background-color: $color-white;
     flex: 0 0 35%;
     border-radius: 20px;
 }

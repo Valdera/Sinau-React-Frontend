@@ -1,0 +1,98 @@
+@import '../../sass/main.scss';
+
+.tabbed {
+    perspective: 60rem;
+    width: 80%;
+    display: flex;
+    position: relative;
+}
+
+.tabs__input {
+    display: none;
+}
+
+.tabbed__container {
+    flex-direction: row;
+}
+
+
+
+.tabbed__container:last-child>label {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.tabbed__container:not(:first-child)>label {
+    border-left: none;
+
+}
+
+
+.tabbed__container:first-child>label {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.tabbed__container>label:hover,
+.tabbed__container>input:checked+label {
+    background-color: $color-grey-dark-2;
+    color: $color-white;
+
+}
+
+.tabs__label {
+    position: relative;
+    display: block;
+    padding: 1.2rem 2rem;
+    cursor: pointer;
+    border: 2px solid $color-grey-dark-2;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    transition: all .5s;
+}
+
+.tabs__label::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: $color-secondary-4;
+    border-radius: 40px;
+    width: 60%;
+    left: 20%;
+    top: 75%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all .3s;
+}
+
+.tabs__content {
+    perspective: 60rem;
+    padding: 2rem;
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    border-radius: 30px;
+    line-height: 1.4em;
+    opacity: 0;
+    z-index: 0;
+    background-color: $color-grey-dark-2;
+    width: 70rem;
+    height: 30rem;
+}
+
+
+#tab_1:checked~.tabs__content--1,
+#tab_2:checked~.tabs__content--2,
+#tab_3:checked~.tabs__content--3 {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+#tab_1:checked~.tabs__label::after,
+#tab_2:checked~.tabs__label::after,
+#tab_3:checked~.tabs__label::after {
+    opacity: 1;
+    transform: scale(1);
+}
