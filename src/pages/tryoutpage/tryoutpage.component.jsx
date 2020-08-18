@@ -1,22 +1,35 @@
-import React from 'react';
-import Navbar from '../../components/navbar/navbar.component';
-import SectionAbout from '../../components/section-about/section-about.component';
-import SectionInfo from '../../components/section-info/section-info.component';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import TryoutOverview from '../../components/tryout-overview/tryout-overview.component';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { fetchExamsStart } from '../../redux/exam/exam.actions';
+import { selectExam } from '../../redux/exam/exam.selector';
 
 import './tryoutpage.styles.scss';
 
-function TryoutPage() {
-  return (
-    <div>
-      <Navbar />
-      <div className="tryout">
-        <div className="section-tryout">
-          <SectionAbout />
-          <SectionInfo />
-        </div>
+class TryoutPage extends Component {
+  componentDidMount() {
+    const { fetchExamsStart } = this.props;
+    fetchExamsStart();
+  }
+
+  render() {
+    const { match } = this.props;
+    return (
+      <div>
+        <Route path={`${match.path}`} component={TryoutOverview} />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default TryoutPage;
+const mapDispatchToProps = (dispatch) => ({
+  fetchExamsStart: () => dispatch(fetchExamsStart())
+});
+
+const mapStateToProps = createStructuredSelector({
+  test: selectExam
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TryoutPage);
