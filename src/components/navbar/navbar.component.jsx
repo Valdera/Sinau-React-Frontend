@@ -8,6 +8,9 @@ import { ReactComponent as AboutIcon } from '../../assets/icon-about.svg';
 import { ReactComponent as HomeIcon } from '../../assets/icon-home.svg';
 import './navbar.styles.scss';
 import Dropdown from '../dropdown/dropdown.component';
+import { connect } from 'react-redux';
+import { selectDirectorySections } from '../../redux/directory/directory.selector';
+import { createStructuredSelector } from 'reselect';
 
 class Navbar extends Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const itemsTryOut = ['SIMAK UI', 'UM UGM', 'UTBK'];
+    const { dropItems } = this.props;
     return (
       <div className="navbar">
         <ProfileBar />
@@ -44,9 +47,14 @@ class Navbar extends Component {
         <NavbarMenu text="About Us">
           <AboutIcon className="navbar__menu-icon" />
         </NavbarMenu>
-        {this.state.hidden ? null : <Dropdown dropItem={itemsTryOut} />}
+        {this.state.hidden ? null : <Dropdown dropItems={dropItems} />}
       </div>
     );
   }
 }
-export default Navbar;
+
+const mapStateToProps = createStructuredSelector({
+  dropItems: selectDirectorySections
+});
+
+export default connect(mapStateToProps)(Navbar);

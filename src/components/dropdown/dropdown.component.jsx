@@ -1,18 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import './dropdown.styles.scss';
 
-function Dropdown({ dropItem }) {
+function Dropdown({ dropItems, history }) {
   return (
     <div className="dropdown">
-      {dropItem.map((item) => (
-        <Link to="/tryout" className="dropdown__item ">
-          {item} &gt;
-        </Link>
+      {dropItems.map(({ title, linkUrl }) => (
+        <div
+          onClick={() => history.push(`/tryout${linkUrl}`)}
+          className="dropdown__item ">
+          {title} &gt;
+        </div>
       ))}
     </div>
   );
 }
 
-export default Dropdown;
+export default withRouter(Dropdown);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/navbar/navbar.component';
-import SectionAbout from '../../components/section-about/section-about.component';
+import SectionAboutContainer from '../../components/section-about/section-about.container';
 import SectionInfo from '../../components/section-info/section-info.component';
 
 import './tryout-overview.styles.scss';
@@ -11,7 +11,7 @@ function TryoutOverview() {
       <Navbar />
       <div className="tryout">
         <div className="section-tryout">
-          <SectionAbout />
+          <SectionAboutContainer />
           <SectionInfo />
         </div>
       </div>

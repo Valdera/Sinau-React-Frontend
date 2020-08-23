@@ -20,8 +20,8 @@ export const changeExamData = (ExamsArray) => {
     }
   };
 
-  ExamsArray.forEach(({ tipeSoal, ...otherData }) => {
-    ExamMap[tipeSoal].exams.push({ ...otherData });
+  ExamsArray.forEach(({ examType, ...otherData }) => {
+    ExamMap[examType].exams.push({ ...otherData });
   });
 
   return ExamMap;

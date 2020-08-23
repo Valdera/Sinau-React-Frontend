@@ -7,7 +7,6 @@ import { examArray } from './exam.data';
 function* fetchExamsAsync() {
   try {
     const examsMap = yield call(changeExamData, examArray);
-    console.log(examsMap);
     yield put(fetchExamsSuccess(examsMap));
   } catch (err) {
     yield put(fetchExamsFailure(err.message));

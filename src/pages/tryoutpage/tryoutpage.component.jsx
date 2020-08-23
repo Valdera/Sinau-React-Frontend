@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import TryoutOverview from '../../components/tryout-overview/tryout-overview.component';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { fetchExamsStart } from '../../redux/exam/exam.actions';
-import { selectExam } from '../../redux/exam/exam.selector';
 
 import './tryoutpage.styles.scss';
 
@@ -28,8 +26,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchExamsStart: () => dispatch(fetchExamsStart())
 });
 
-const mapStateToProps = createStructuredSelector({
-  test: selectExam
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TryoutPage);
+export default connect(null, mapDispatchToProps)(TryoutPage);

@@ -3,19 +3,19 @@ const INITIAL_STATE = {
     {
       id: 1,
       title: 'SIMAK UI',
-      linkUrl: 'tryout/simak',
+      linkUrl: '/simak',
       tipe: 'simak'
     },
     {
       id: 2,
       title: 'UM UGM',
-      linkUrl: 'tryout/umugm',
+      linkUrl: '/umugm',
       tipe: 'umugm'
     },
     {
       id: 3,
       title: 'UTBK',
-      linkUrl: 'tryout/utbk',
+      linkUrl: '/utbk',
       tipe: 'utbk'
     }
   ]
