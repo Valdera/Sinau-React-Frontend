@@ -13,7 +13,6 @@ const SpinnerContainer = () => {
 
 const WithSpinner = (WrapperComponent) => {
   const Spinner = ({ isLoading, ...otherProps }) => {
-    isLoading = true;
     return isLoading ? (
       <SpinnerContainer />
     ) : (
