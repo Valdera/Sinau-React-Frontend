@@ -6,7 +6,7 @@ export const changeExamData = (ExamsArray) => {
       routeName: 'simak',
       exams: []
     },
-    ugm: {
+    umugm: {
       id: 2,
       title: 'UM UGM',
       routeName: 'umugm',

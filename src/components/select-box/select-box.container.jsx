@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { selectExamsLoaded } from '../../redux/exam/exam.selector';
-import WithSpinner from '../with-spinner/with-spinner.component';
+import WithDot from '../with-dot/with-dot.component';
 import { createStructuredSelector } from 'reselect';
-import SectionAbout from './section-about.component';
+import SelectBox from './select-box.component';
 
 const mapStateToProps = createStructuredSelector({
   isLoading: (state) => !selectExamsLoaded(state)
 });
 
-const SectionAboutContainer = compose(
+const SelectBoxContainer = compose(
   connect(mapStateToProps),
-  WithSpinner
-)(SectionAbout);
+  WithDot
+)(SelectBox);
 
-export default SectionAboutContainer;
+export default SelectBoxContainer;

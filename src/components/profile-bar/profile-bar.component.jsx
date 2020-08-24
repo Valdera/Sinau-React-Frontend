@@ -5,7 +5,7 @@ import './profile-bar.styles.scss';
 
 function ProfileBar() {
   return (
-    <Link className="profile">
+    <Link to="/profile" className="profile">
       <img src={`${__dirname}user-test.png`} alt="" className="profile__img" />
       <span className="profile__name">Valdera</span>
     </Link>

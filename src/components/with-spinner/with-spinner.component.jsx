@@ -4,9 +4,9 @@ import './with-spinner.styles.scss';
 
 const SpinnerContainer = () => {
   return (
-    <div class="c">
-      <div class="rec spinner6"></div>
-      <div class="rec spinner5"></div>
+    <div className="c">
+      <div className="rec spinner6"></div>
+      <div className="rec spinner5"></div>
     </div>
   );
 };

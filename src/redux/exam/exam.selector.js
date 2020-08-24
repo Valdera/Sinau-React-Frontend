@@ -12,6 +12,13 @@ export const selectExam = (examUrlParam) =>
     exams ? exams[examUrlParam] : null
   );
 
+export const selectExamsObject = (examUrlParam, examSlug) =>
+  createSelector([selectExamItems], (exams) =>
+    exams
+      ? exams[examUrlParam].exams.find((exam) => exam.slug === examSlug)
+      : null
+  );
+
 export const selectExamsLoaded = createSelector(
   [selectExams],
   (exam) => !!exam.exams

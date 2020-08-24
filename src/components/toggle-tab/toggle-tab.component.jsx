@@ -13,7 +13,7 @@ function ToggleTab() {
           className="tabs__input"
           defaultChecked
         />
-        <label for="tab_1" className="tabs__label tabs__label--1">
+        <label htmlFor="tab_1" className="tabs__label tabs__label--1">
           TEST 1
         </label>
         <div className="tabs__content tabs__content--1">
@@ -29,7 +29,7 @@ function ToggleTab() {
 
       <div className="tabbed__container">
         <input type="radio" name="tabs" id="tab_2" className="tabs__input" />
-        <label for="tab_2" className="tabs__label tabs__label--2">
+        <label htmlFor="tab_2" className="tabs__label tabs__label--2">
           TEST 2
         </label>
         <div className="tabs__content tabs__content--2">
@@ -45,7 +45,7 @@ function ToggleTab() {
 
       <div className="tabbed__container">
         <input type="radio" name="tabs" id="tab_3" className="tabs__input" />
-        <label for="tab_3" className="tabs__label tabs__label--3">
+        <label htmlFor="tab_3" className="tabs__label tabs__label--3">
           TEST 3
         </label>
         <div className="tabs__content tabs__content--3">

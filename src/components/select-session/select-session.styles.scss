@@ -1,0 +1,60 @@
+@import '../../sass/main.scss';
+
+.select-session__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.select-session {
+    font-family: Poppins;
+    font-weight: 500;
+    position: relative;
+    color: $color-grey-dark-2;
+    border: 2px solid $color-grey-dark-2;
+    background-color: $color-secondary-4;
+    width: 22rem;
+    padding: .7rem 2rem;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 3;
+
+    &__svg {
+        position: absolute;
+        top: 50%;
+        height: 2rem;
+        right: 1rem;
+        transform: translateY(-50%) rotate(0deg);
+        transition: all .3s;
+    }
+
+    &__svg.--active {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    &__button {
+        margin-top: 15rem;
+    }
+
+    &::-webkit-scrollbar {
+        widows: 14px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-clip: content-box;
+        border: 4px solid transparent;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 10px;
+    }
+
+    &::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+}

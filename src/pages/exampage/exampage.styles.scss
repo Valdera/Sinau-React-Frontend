@@ -1,0 +1,44 @@
+@import '../../sass/main.scss';
+
+.exampage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.exampage__question {
+    background-color: $color-white;
+    height: 100%;
+    flex: 0 0 75%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.exampage__info {
+    background-color: $color-white;
+    flex: 0 0 25%;
+    border-left: 1px solid $color-grey-dark-2;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.question {
+    margin-top: 10vh;
+    width: 80%;
+    min-height: 70vh;
+    max-height: 82vh;
+    border-radius: 20px;
+    background-color: $color-grey-light-1;
+    border: 3px solid $color-grey-dark-2
+}
+
+.info__question {
+    margin-top: 10vh;
+    width: 80%;
+    min-height: 35vh;
+    border-radius: 20px;
+    background-color: hotpink;
+}

@@ -1,3 +1,5 @@
+@import '../../sass/main.scss';
+
 $size: 40px;
 $point: aquamarine;
 $gray1: #eee;
@@ -62,11 +64,11 @@ $small: 0.625;
     animation: rota1 1.3s linear infinite;
     // filter: blur(2px);
     // border-width: 3px;
-    border: $gray2 3px solid;
+    border: $color-primary-4 3px solid;
 }
 
 .spinner6 {
     animation: rota2 1.3s infinite;
-    border-color: $point;
+    border-color: $color-secondary-4;
     border-width: 3px;
 }

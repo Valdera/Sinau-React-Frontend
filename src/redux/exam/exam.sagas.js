@@ -1,7 +1,7 @@
 import { ExamActionTypes } from './exam.types';
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { fetchExamsFailure, fetchExamsSuccess } from './exam.actions';
-import { changeExamData } from '../../database/databas.utils';
+import { changeExamData } from '../../database/database.utils';
 import { examArray } from './exam.data';
 
 function* fetchExamsAsync() {
