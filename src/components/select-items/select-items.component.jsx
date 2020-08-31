@@ -9,7 +9,7 @@ function SelectItems({ items, handleState }) {
         return (
           <div
             className="select-box__item"
-            onClick={(e) => handleState(e, item.examName)}>
+            onClick={(e) => handleState(e, item)}>
             <span className="select-box__item--title">{item.examName}</span>
           </div>
         );

@@ -1,9 +1,37 @@
 import React from 'react';
-import Navigation from '../../components/navigation/navigation.component';
-import SelectSession from '../../components/select-session/select-session.component';
-import Markdown from '../../utils/Markdown/Markdown.component';
 
 import './exampage.styles.scss';
+import Question from '../../components/question/question.component';
+import Navigation from '../../components/navigation/navigation.component';
+import SelectSession from '../../components/select-session/select-session.component';
+
+const num = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25
+];
 
 function ExamPage() {
   return (
@@ -11,17 +39,16 @@ function ExamPage() {
       <Navigation />
       <div className="exampage">
         <div className="exampage__question">
-          <div className="question">
-            <div className="question__text">
-              <Markdown>{`When $a \\ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
-$$
-x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}
-$$`}</Markdown>
-            </div>
-          </div>
+          <Question />
         </div>
         <div className="exampage__info">
-          <div className="info__question"></div>
+          <div className="info__question">
+            {num.map((number) => (
+              <div className="info__number">
+                <span>{number}</span>
+              </div>
+            ))}
+          </div>
           <div className="info__session">
             <SelectSession />
           </div>

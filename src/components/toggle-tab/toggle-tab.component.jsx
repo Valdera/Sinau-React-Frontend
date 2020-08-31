@@ -1,8 +1,10 @@
 import React from 'react';
-
 import './toggle-tab.styles.scss';
+import { connect } from 'react-redux';
+import { selectCurrentPaket } from '../../redux/location/location.selector';
+import { createStructuredSelector } from 'reselect';
 
-function ToggleTab() {
+function ToggleTab({ exam }) {
   return (
     <div className="tabbed">
       <div className="tabbed__container">
@@ -14,54 +16,102 @@ function ToggleTab() {
           defaultChecked
         />
         <label htmlFor="tab_1" className="tabs__label tabs__label--1">
-          TEST 1
+          INFO
         </label>
-        <div className="tabs__content tabs__content--1">
-          <h2>HTML</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+        <div className="tabs__content tabs__content--1 tabs__description">
+          <div className="tabs__description--title">
+            <h1>DESCRIPTION</h1>
+          </div>
+          <div className="tabs__description--flex">
+            <div className="tabs__description--list">
+              {exam ? (
+                <ul>
+                  <li>
+                    Harga: <span>Rp.{exam.price}</span>
+                  </li>
+                  <li>
+                    Total Sesi: <span>{sessionStorage.length} sesi</span>
+                  </li>
+                  <li>
+                    Jumlah Soal: <span>{exam.questions.length} soal</span>
+                  </li>
+                  <li>
+                    Waktu: <span>{exam.duration} menit</span>
+                  </li>
+                  <li>
+                    Tahun: <span>{exam.year}</span>
+                  </li>
+                  <li>
+                    Jurusan: <span>{exam.major.toUpperCase()}</span>
+                  </li>
+                </ul>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className="tabs__description--text">
+              Simak-UI (Seleksi Masuk UI) adalah ujian seleksi terpadu masuk UI
+              yang diselenggarakan UI bagi calon mahasiswa yang ingin kuliah di
+              UI.
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="tabbed__container">
         <input type="radio" name="tabs" id="tab_2" className="tabs__input" />
         <label htmlFor="tab_2" className="tabs__label tabs__label--2">
-          TEST 2
+          RANKING
         </label>
-        <div className="tabs__content tabs__content--2">
-          <h2>CSS</h2>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum
-          </p>
+        <div className="tabs__content tabs__content--2 tabs__ranking">
+          <div className="tabs__ranking--title">
+            <h1>TOP 5</h1>
+          </div>
+          <ul>
+            <li style={{ marginLeft: 0 }}>
+              <div>1</div>
+              <span>Fauzan Valdera</span>
+              <p>650</p>
+            </li>
+            <li style={{ marginLeft: '2rem' }}>
+              <div>2</div>
+              <span>Fauzan Valdera</span>
+              <p>650</p>
+            </li>
+            <li style={{ marginLeft: '4rem' }}>
+              <div>3</div>
+              <span>Fauzan Valdera</span>
+              <p>650</p>
+            </li>
+            <li style={{ marginLeft: '6rem' }}>
+              <div>4</div>
+              <span>Fauzan Valdera</span>
+              <p>650</p>
+            </li>
+            <li style={{ marginLeft: '8rem' }}>
+              <div>5</div>
+              <span>Fauzan Valdera</span>
+              <p>640</p>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div className="tabbed__container">
         <input type="radio" name="tabs" id="tab_3" className="tabs__input" />
         <label htmlFor="tab_3" className="tabs__label tabs__label--3">
-          TEST 3
+          MORE
         </label>
         <div className="tabs__content tabs__content--3">
-          <h2>JS</h2>
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt.
-          </p>
+          <div className=""></div>
         </div>
       </div>
     </div>
   );
 }
 
-export default ToggleTab;
+const mapStateToProps = createStructuredSelector({
+  exam: selectCurrentPaket
+});
+
+export default connect(mapStateToProps)(ToggleTab);

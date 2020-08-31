@@ -4,11 +4,14 @@ import './select-session-items.styles.scss';
 
 function SelectSessionItems({ items, handleState }) {
   return (
-    <div className="select-box__container">
+    <div className="select-session-box__container">
       {items.map((item) => {
         return (
-          <div className="select-box__item">
-            <span className="select-box__item--title">{item.examName}</span>
+          <div
+            key={item}
+            onClick={(e) => handleState(e, item)}
+            className="select-session-box__item">
+            <span className="select-session-box__item--title">{item}</span>
           </div>
         );
       })}

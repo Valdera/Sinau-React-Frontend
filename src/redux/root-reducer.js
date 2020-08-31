@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 
 import examReducer from './exam/exam.reducer';
 import directoryReducer from './directory/directory.reducer';
+import locationReducer from './location/location.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -14,7 +15,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   exam: examReducer,
-  directory: directoryReducer
+  directory: directoryReducer,
+  location: locationReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

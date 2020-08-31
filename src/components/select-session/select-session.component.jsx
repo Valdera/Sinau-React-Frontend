@@ -3,6 +3,8 @@ import { ReactComponent as ArrowDown } from '../../assets/icon-arrow-bottom.svg'
 import SelectSessionItems from '../select-session-items/select-session-items.component';
 import './select-session.styles.scss';
 
+const sessions = ['matematika', 'bahasa inggris', 'ipa'];
+
 class SelectSession extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,15 @@ class SelectSession extends Component {
       value: ''
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleState = this.handleState.bind(this);
   }
+
+  handleState(e, value) {
+    this.setState({
+      value
+    });
+  }
+
   handleClick() {
     this.setState({
       active: !this.state.active
@@ -20,7 +30,7 @@ class SelectSession extends Component {
 
   componentDidMount() {
     this.setState({
-      value: 'UM UGM'
+      value: sessions[0]
     });
   }
 
@@ -33,7 +43,12 @@ class SelectSession extends Component {
           <ArrowDown
             className={`select-session__svg ${active ? '--active' : ''}`}
           />
-          {active ? <SelectSessionItems /> : null}
+          {active ? (
+            <SelectSessionItems
+              handleState={this.handleState}
+              items={sessions}
+            />
+          ) : null}
         </div>
       </div>
     );

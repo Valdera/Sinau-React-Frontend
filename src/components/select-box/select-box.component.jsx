@@ -3,6 +3,7 @@ import { ReactComponent as ArrowDown } from '../../assets/icon-arrow-bottom.svg'
 import SelectItems from '../select-items/select-items.component';
 import { connect } from 'react-redux';
 import { selectExam } from '../../redux/exam/exam.selector';
+import { changePaket } from '../../redux/location/location.action';
 import ButtonSlide from '../../components/button-slide/button-slide.component';
 import { withRouter } from 'react-router-dom';
 import './select-box.styles.scss';
@@ -18,10 +19,12 @@ class SelectBox extends Component {
     this.handleState = this.handleState.bind(this);
   }
 
-  handleState(e, examName) {
+  handleState(e, exam) {
+    const { changeCurrentPaket } = this.props;
     this.setState({
-      value: examName
+      value: exam.examName
     });
+    changeCurrentPaket(exam);
   }
 
   handleClick() {
@@ -31,10 +34,13 @@ class SelectBox extends Component {
   }
 
   componentDidMount() {
-    const { exam } = this.props;
+    const { exam, changeCurrentPaket } = this.props;
     this.setState({
       value: exam.exams[0].examName
     });
+    console.log(exam.exams[0].examName);
+
+    changeCurrentPaket(exam.exams[0]);
   }
 
   render() {
@@ -63,4 +69,10 @@ const mapStateToProps = (state, ownProps) => ({
   exam: selectExam(ownProps.match.params.examId)(state)
 });
 
-export default withRouter(connect(mapStateToProps)(SelectBox));
+const mapDispatchToProps = (dispatch) => ({
+  changeCurrentPaket: (item) => dispatch(changePaket(item))
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SelectBox)
+);

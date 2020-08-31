@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-top: 4rem;
 }
 
 .select-session {
@@ -13,7 +14,7 @@
     position: relative;
     color: $color-grey-dark-2;
     border: 2px solid $color-grey-dark-2;
-    background-color: $color-secondary-4;
+    background-color: $color-white;
     width: 22rem;
     padding: .7rem 2rem;
     text-align: center;

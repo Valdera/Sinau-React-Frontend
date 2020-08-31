@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './navigation.styles.scss';
 
@@ -20,28 +21,28 @@ function Navigation() {
       <nav className="navigation__nav">
         <ul className="navigation__list">
           <li className="navigation__item">
+            <Link to="/" className="navigation__link">
+              Home
+            </Link>
+          </li>
+          <li className="navigation__item">
             <a href="#" className="navigation__link">
-              <span>01</span>About Natous
+              About Us
             </a>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
-              <span>02</span>Your benfits
+              Help
             </a>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
-              <span>03</span>Popular tours
+              Tips
             </a>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
-              <span>04</span>Stories
-            </a>
-          </li>
-          <li className="navigation__item">
-            <a href="#" className="navigation__link">
-              <span>05</span>Book now
+              Tryout
             </a>
           </li>
         </ul>
