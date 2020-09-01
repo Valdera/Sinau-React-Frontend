@@ -12,7 +12,7 @@ function Navigation() {
         id="navi-toggle"
       />
 
-      <label for="navi-toggle" className="navigation__button">
+      <label htmlFor="navi-toggle" className="navigation__button">
         <span className="navigation__icon">&nbsp;</span>
       </label>
 
@@ -26,24 +26,24 @@ function Navigation() {
             </Link>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
+            <Link to="/about-us" className="navigation__link">
               About Us
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
+            <Link to="/help" className="navigation__link">
               Help
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
+            <Link to="/tips" className="navigation__link">
               Tips
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
-              Tryout
-            </a>
+            <Link to="/profile" className="navigation__link">
+              Profile
+            </Link>
           </li>
         </ul>
       </nav>

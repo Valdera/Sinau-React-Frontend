@@ -8,7 +8,7 @@ function Answers({ answers, ...otherProps }) {
   return (
     <form className="question__answers">
       {answers.map((answer, id) => (
-        <div className="question__answer">
+        <div key={`answer-${id}`} className="question__answer">
           <input
             type="radio"
             className="question__input"

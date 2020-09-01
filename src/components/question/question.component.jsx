@@ -14,10 +14,11 @@ export default class Question extends Component {
           <div className="question__number">
             <span>21</span>
           </div>
-          <Markdown>{`When $a \\ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
-$$
-x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}
-$$`}</Markdown>
+          <Markdown>
+            {
+              'When $a \\ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are\n$$\nx = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}\n$$'
+            }
+          </Markdown>
         </div>
         <div className="question__answer--title">Answer:</div>
         <Answers name="answer" label="answer" answers={answers} />

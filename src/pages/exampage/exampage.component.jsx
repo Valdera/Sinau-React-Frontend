@@ -6,7 +6,6 @@ import Navigation from '../../components/navigation/navigation.component';
 import SelectSession from '../../components/select-session/select-session.component';
 import Timer from '../../components/timer/timer.component';
 import ButtonBlock from '../../components/button-block/button-block.component';
-import ButtonSlide from '../../components/button-slide/button-slide.component';
 
 const num = [
   1,
@@ -51,7 +50,7 @@ function ExamPage() {
             </div>
             <div className="info__question">
               {num.map((number) => (
-                <div className="info__number">
+                <div key={`number-${number}`} className="info__number">
                   <span>{number}</span>
                 </div>
               ))}
