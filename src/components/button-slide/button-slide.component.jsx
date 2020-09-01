@@ -4,7 +4,7 @@ import './button-slide.styles.scss';
 function ButtonSlide({ children, ...props }) {
   return (
     <div className="button">
-      <button className="btn-slide">
+      <button className="btn-slide" {...props}>
         <span>{children}</span>
       </button>
     </div>

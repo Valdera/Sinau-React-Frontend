@@ -1,0 +1,18 @@
+@import '../../sass/main.scss';
+
+.timer {
+    border-radius: 10px;
+    background-color: $color-white;
+    width: 22rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & span {
+        font-family: Poppins;
+        letter-spacing: .5px;
+        font-size: 3rem;
+        color: $color-secondary-4;
+    }
+}

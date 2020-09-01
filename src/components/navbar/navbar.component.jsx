@@ -21,7 +21,7 @@ class Navbar extends Component {
     this.changeHidden = this.changeHidden.bind(this);
   }
 
-  changeHidden(event) {
+  changeHidden() {
     this.setState({
       hidden: !this.state.hidden
     });
@@ -47,7 +47,7 @@ class Navbar extends Component {
         <NavbarMenu text="About Us">
           <AboutIcon className="navbar__menu-icon" />
         </NavbarMenu>
-        {this.state.hidden ? null : <Dropdown dropItems={dropItems} />}
+        {this.state.hidden ? null : <Dropdown changeHidden={this.changeHidden} dropItems={dropItems} />}
       </div>
     );
   }

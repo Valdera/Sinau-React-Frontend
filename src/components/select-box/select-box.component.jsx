@@ -22,7 +22,7 @@ class SelectBox extends Component {
   handleState(e, exam) {
     const { changeCurrentPaket } = this.props;
     this.setState({
-      value: exam.examName
+      value: exam
     });
     changeCurrentPaket(exam);
   }
@@ -36,20 +36,24 @@ class SelectBox extends Component {
   componentDidMount() {
     const { exam, changeCurrentPaket } = this.props;
     this.setState({
-      value: exam.exams[0].examName
+      value: exam.exams[0]
     });
-    console.log(exam.exams[0].examName);
 
     changeCurrentPaket(exam.exams[0]);
   }
 
   render() {
-    const { exam } = this.props;
+    const { exam, history } = this.props;
     const { active, value } = this.state;
+    console.log(value);
+    const linkUrl =
+      value !== ''
+        ? `exam/${value.examType}/${value.slug}/${value.sessions[0]}/1`
+        : '';
     return (
       <div className="select-box__box">
         <div className="select-box" onClick={this.handleClick}>
-          <span className="select-box__value">{value}</span>
+          <span className="select-box__value">{value.examName}</span>
           <ArrowDown
             className={`select-box__svg ${active ? '--active' : ''}`}
           />
@@ -58,13 +62,15 @@ class SelectBox extends Component {
           ) : null}
         </div>
         <div className="select-box__button">
-          <ButtonSlide>Ikuti</ButtonSlide>
+          <ButtonSlide onClick={() => history.push(`/${linkUrl}`)}>
+            Ikuti
+          </ButtonSlide>
         </div>
       </div>
     );
   }
 }
-
+///exam/:examId/:examSlug/:session/:number
 const mapStateToProps = (state, ownProps) => ({
   exam: selectExam(ownProps.match.params.examId)(state)
 });

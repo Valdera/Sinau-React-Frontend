@@ -1,6 +1,7 @@
 @import '../../sass/main.scss';
 
 .select-session__box {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

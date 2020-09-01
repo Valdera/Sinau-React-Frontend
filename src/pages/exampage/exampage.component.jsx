@@ -4,6 +4,9 @@ import './exampage.styles.scss';
 import Question from '../../components/question/question.component';
 import Navigation from '../../components/navigation/navigation.component';
 import SelectSession from '../../components/select-session/select-session.component';
+import Timer from '../../components/timer/timer.component';
+import ButtonBlock from '../../components/button-block/button-block.component';
+import ButtonSlide from '../../components/button-slide/button-slide.component';
 
 const num = [
   1,
@@ -35,22 +38,30 @@ const num = [
 
 function ExamPage() {
   return (
-    <div>
+    <div className="exampage__background">
       <Navigation />
-      <div className="exampage">
-        <div className="exampage__question">
-          <Question />
-        </div>
-        <div className="exampage__info">
-          <div className="info__question">
-            {num.map((number) => (
-              <div className="info__number">
-                <span>{number}</span>
-              </div>
-            ))}
+      <div className="exampage__box">
+        <div className="exampage">
+          <div className="exampage__question">
+            <Question />
           </div>
-          <div className="info__session">
-            <SelectSession />
+          <div className="exampage__info">
+            <div className="info__timer">
+              <Timer />
+            </div>
+            <div className="info__question">
+              {num.map((number) => (
+                <div className="info__number">
+                  <span>{number}</span>
+                </div>
+              ))}
+            </div>
+            <div className="info__session">
+              <SelectSession />
+            </div>
+            <div className="info__button">
+              <ButtonBlock>Submit</ButtonBlock>
+            </div>
           </div>
         </div>
       </div>

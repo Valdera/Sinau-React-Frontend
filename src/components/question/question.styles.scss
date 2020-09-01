@@ -1,10 +1,10 @@
 @import '../../sass/main.scss';
 
 .question {
-    margin-top: 10vh;
-    width: 80%;
-    min-height: 70vh;
-    max-height: 82vh;
+    margin-top: 5rem;
+    width: 90%;
+    min-height: 50rem;
+    max-height: 60rem;
     border-radius: 20px;
     background-color: $color-grey-light-1;
     border: 3px solid $color-grey-dark-2;
@@ -12,6 +12,8 @@
     display: flex;
     flex-direction: column;
     font-size: 1.8rem;
+    margin-bottom: 5rem;
+    overflow: auto;
 
     &__text {
         padding: 3rem 6.8rem;
