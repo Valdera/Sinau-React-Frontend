@@ -1,40 +1,83 @@
-import { takeLatest, put, all, call } from 'react-saga/effects';
+import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { AuthActionTypes } from './auth.types';
+import Cookies from 'universal-cookie';
 import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
   signOutFailure,
-  emailSignUpStart,
+  emailSignUpFailure,
   emailSignUpSuccess,
   forgotPasswordSuccess,
   forgotPasswordFailure
 } from './auth.actions';
+import {
+  signIn,
+  signUp,
+  forgotPassword
+} from '../../database/api/auth.request';
 
 //* WORKERS
-function* signUp() {}
+function* workerSignUp({ payload }) {
+  try {
+    const { user, token } = yield signUp(payload);
+    const cookies = new Cookies();
+    console.log({ user, token });
+    yield cookies.set('jwt', token, { path: '/' });
+    yield put(emailSignUpSuccess(user));
+  } catch (err) {
+    alert(err.response.data.message);
+    yield put(emailSignUpFailure(err));
+  }
+}
 
-function* signOut() {}
+function* workerSignOut() {
+  try {
+    const cookies = new Cookies();
+    yield cookies.remove('jwt', { path: '/' });
+    yield put(signOutSuccess());
+  } catch (err) {
+    yield put(signOutFailure(err));
+  }
+}
 
-function* signIn() {}
+function* workerSignIn({ payload }) {
+  try {
+    const { user, token } = yield signIn(payload);
+    const cookies = new Cookies();
+    yield cookies.set('jwt', token, { path: '/' });
+    yield put(signInSuccess(user));
+  } catch (err) {
+    alert(err.response.data.message);
+    yield put(signInFailure(err));
+  }
+}
 
-function* forgotPassword() {}
+function* workerForgotPassword({ payload }) {
+  try {
+    const message = yield forgotPassword(payload);
+    yield put(forgotPasswordSuccess(message));
+  } catch (err) {
+    alert(err.response.data.message);
+    yield put(forgotPasswordFailure(err));
+  }
+}
 
 //* WATCHERS
 function* watchSignUpStart() {
-  yield takeLatest(AuthActionTypes.EMAIL_SIGN_UP_START, signUp);
+  yield takeLatest(AuthActionTypes.EMAIL_SIGN_UP_START, workerSignUp);
 }
 
 function* watchSignInStart() {
-  yield takeLatest(AuthActionTypes.SIGN_IN_START, signIn);
+  yield takeLatest(AuthActionTypes.SIGN_IN_START, workerSignIn);
 }
 
 function* watchSignOutStart() {
-  yield takeLatest(AuthActionTypes.SIGN_OUT_START, signOut);
+  yield takeLatest(AuthActionTypes.SIGN_OUT_START, workerSignOut);
 }
 
 function* watchForgotPasswordStart() {
-  yield takeLatest(AuthActionTypes.FORGOT_PASSWORD_START, forgotPassword);
+  yield takeLatest(AuthActionTypes.FORGOT_PASSWORD_START, workerForgotPassword);
 }
 
 export function* authSagas() {

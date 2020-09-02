@@ -11,6 +11,8 @@ import Dropdown from '../dropdown/dropdown.component';
 import { connect } from 'react-redux';
 import { selectDirectorySections } from '../../redux/directory/directory.selector';
 import { createStructuredSelector } from 'reselect';
+import { signOutStart } from '../../redux/auth/auth.actions';
+import { selectCurrentUser } from '../../redux/auth/auth.selector';
 
 class Navbar extends Component {
   constructor(props) {
@@ -19,6 +21,12 @@ class Navbar extends Component {
       hidden: true
     };
     this.changeHidden = this.changeHidden.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  async handleSignOut() {
+    const { signOutStart } = this.props;
+    await signOutStart();
   }
 
   changeHidden() {
@@ -28,7 +36,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { dropItems } = this.props;
+    const { dropItems, currentUser } = this.props;
     return (
       <div className="navbar">
         <ProfileBar />
@@ -41,9 +49,18 @@ class Navbar extends Component {
         <NavbarMenu text="Tips" to="/tips">
           <UnivIcon className="navbar__menu-icon" />
         </NavbarMenu>
-        <NavbarMenu text="Logout" to="/login">
-          <LogoutIcon className="navbar__menu-icon" />
-        </NavbarMenu>
+        {currentUser ? (
+          <NavbarMenu
+            text="Logout"
+            to="/login"
+            handleClick={this.handleSignOut}>
+            <LogoutIcon className="navbar__menu-icon" />
+          </NavbarMenu>
+        ) : (
+          <NavbarMenu text="Login" to="/login">
+            <LogoutIcon className="navbar__menu-icon" />
+          </NavbarMenu>
+        )}
         <NavbarMenu text="About Us" to="/about-us">
           <AboutIcon className="navbar__menu-icon" />
         </NavbarMenu>
@@ -55,8 +72,13 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  dropItems: selectDirectorySections
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart())
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapStateToProps = createStructuredSelector({
+  dropItems: selectDirectorySections,
+  currentUser: selectCurrentUser
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

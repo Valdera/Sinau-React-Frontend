@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import FormInput from '../form-input/form-input.component';
 import ButtonSlide from '../button-slide/button-slide.component';
 import ButtonText from '../button-text/button-text.component';
+import { connect } from 'react-redux';
+import {
+  emailSignInStart,
+  forgotPasswordStart
+} from '../../redux/auth/auth.actions';
 import { ReactComponent as AuthSVG } from '../../assets/undraw_auth.svg';
 import { ReactComponent as LoginSVG } from '../../assets/undraw_login.svg';
 
@@ -16,6 +21,29 @@ class SignIn extends Component {
       emailReset: ''
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitSignIn = this.handleSubmitSignIn.bind(this);
+    this.handleSubmitForgotPass = this.handleSubmitForgotPass.bind(this);
+  }
+
+  async handleSubmitSignIn(evt) {
+    evt.preventDefault();
+    const { emailSignInStart } = this.props;
+    const { emailLogin, password } = this.state;
+    await emailSignInStart({ emailLogin, password });
+    this.setState({
+      emailLogin: '',
+      password: ''
+    });
+  }
+
+  async handleSubmitForgotPass(evt) {
+    evt.preventDefault();
+    const { forgotPasswordStart } = this.props;
+    const { emailReset } = this.state;
+    await forgotPasswordStart({ emailReset });
+    this.setState({
+      emailReset: ''
+    });
   }
 
   handleChange(evt) {
@@ -32,7 +60,7 @@ class SignIn extends Component {
         <span className="sign-in__sub">
           Sign in with your email and password
         </span>
-        <form className="sign-in__form">
+        <form className="sign-in__form" onSubmit={this.handleSubmitSignIn}>
           <div className="login__svg-box">
             <LoginSVG className="login__svg" />
           </div>
@@ -55,12 +83,14 @@ class SignIn extends Component {
             required
           />
           <div className="sign-in__button">
-            <ButtonSlide>Sign In</ButtonSlide>
+            <ButtonSlide type="submit" value="Submit Form">
+              Sign In
+            </ButtonSlide>
           </div>
         </form>
 
         <span className="sign-in__sub">Forgot your password</span>
-        <form className="sign-in__form">
+        <form className="sign-in__form" onSubmit={this.handleSubmitForgotPass}>
           <div className="forgot__svg-box">
             <AuthSVG className="forgot__svg" />
           </div>
@@ -74,7 +104,9 @@ class SignIn extends Component {
             required
           />
           <div className="sign-in__button">
-            <ButtonText>Forgot Password</ButtonText>
+            <ButtonText type="submit" value="Submit Form">
+              Forgot Password
+            </ButtonText>
           </div>
         </form>
       </div>
@@ -82,4 +114,10 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  emailSignInStart: (emailAndPassword) =>
+    dispatch(emailSignInStart(emailAndPassword)),
+  forgotPasswordStart: (email) => dispatch(forgotPasswordStart(email))
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

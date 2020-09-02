@@ -45,7 +45,6 @@ class SelectBox extends Component {
   render() {
     const { exam, history } = this.props;
     const { active, value } = this.state;
-    console.log(value);
     const linkUrl =
       value !== ''
         ? `exam/${value.examType}/${value.slug}/${value.sessions[0]}/1`

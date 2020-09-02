@@ -4,11 +4,11 @@ import './with-dot.styles.scss';
 
 const DotContainer = () => {
   return (
-    <div class="c">
-      <div class="wrap1">
-        <div class="dot dot1"></div>
-        <div class="dot dot2"></div>
-        <div class="dot dot3"></div>
+    <div className="c">
+      <div className="wrap1">
+        <div className="dot dot1"></div>
+        <div className="dot dot2"></div>
+        <div className="dot dot3"></div>
       </div>
     </div>
   );

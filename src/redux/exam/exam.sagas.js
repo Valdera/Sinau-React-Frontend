@@ -9,7 +9,6 @@ import { getAllExams } from '../../database/api/exam.request';
 function* fetchExamsAsync() {
   try {
     const examArray = yield getAllExams();
-    console.log(examArray);
     const examsMap = yield call(changeExamData, examArray);
     yield put(fetchExamsSuccess(examsMap));
   } catch (err) {

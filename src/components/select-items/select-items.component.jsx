@@ -8,6 +8,7 @@ function SelectItems({ items, handleState }) {
       {items.map((item) => {
         return (
           <div
+            key={`select-items-${item}`}
             className="select-box__item"
             onClick={(e) => handleState(e, item)}>
             <span className="select-box__item--title">{item.examName}</span>

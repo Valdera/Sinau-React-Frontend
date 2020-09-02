@@ -5,9 +5,21 @@ import './navbar-menu.styles.scss';
 function NavbarMenu({ children, text, handleClick, ...otherProps }) {
   return (
     <div className="navbar__menu">
-      <Link onClick={handleClick} className="navbar__menu-text" {...otherProps}>
-        {text}
-      </Link>
+      {otherProps.to ? (
+        <Link
+          onClick={handleClick}
+          className="navbar__menu-text"
+          {...otherProps}>
+          {text}
+        </Link>
+      ) : (
+        <div
+          className="navbar__menu-text"
+          onClick={handleClick}
+          {...otherProps}>
+          {text}
+        </div>
+      )}
       {children}
     </div>
   );

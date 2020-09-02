@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import FormInput from '../form-input/form-input.component';
 import ButtonSlide from '../button-slide/button-slide.component';
 import FormRadio from '../form-radio/form-radio.component';
+import { connect } from 'react-redux';
+import { emailSignUpStart } from '../../redux/auth/auth.actions';
 import { ReactComponent as SecureSVG } from '../../assets/undraw_secure.svg';
 
 import './sign-up.styles.scss';
@@ -18,6 +20,29 @@ class SignUp extends Component {
       major: ''
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitSignUp = this.handleSubmitSignUp.bind(this);
+  }
+
+  async handleSubmitSignUp(evt) {
+    evt.preventDefault();
+    const { email, password, passwordConfirm, kelas, name, major } = this.state;
+    const { emailSignUpStart } = this.props;
+    await emailSignUpStart({
+      email,
+      password,
+      passwordConfirm,
+      kelas,
+      name,
+      major
+    });
+    this.setState({
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      kelas: '',
+      name: '',
+      major: ''
+    });
   }
 
   handleChange(evt) {
@@ -34,7 +59,7 @@ class SignUp extends Component {
         <span className="sign-up__sub">
           Sign up with your email and password
         </span>
-        <form className="sign-up__form">
+        <form className="sign-up__form" onSubmit={this.handleSubmitSignUp}>
           <div className="secure__svg-box">
             <SecureSVG className="secure__svg" />
           </div>
@@ -90,11 +115,18 @@ class SignUp extends Component {
           />
 
           <div className="sign-up__button">
-            <ButtonSlide>Sign Up</ButtonSlide>
+            <ButtonSlide type="submit" value="Submit Form">
+              Sign Up
+            </ButtonSlide>
           </div>
         </form>
       </div>
     );
   }
 }
-export default SignUp;
+
+const mapDispatchToProps = (dispatch) => ({
+  emailSignUpStart: (userData) => dispatch(emailSignUpStart(userData))
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

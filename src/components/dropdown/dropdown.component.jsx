@@ -8,6 +8,7 @@ function Dropdown({ dropItems, history, changeHidden }) {
     <div className="dropdown">
       {dropItems.map(({ title, linkUrl }) => (
         <div
+          key={`dropitems-${title}`}
           onClick={() => history.push(`/tryout${linkUrl}`)}
           className="dropdown__item ">
           {title} &gt;
