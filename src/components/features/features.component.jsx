@@ -16,6 +16,7 @@ function Features() {
         <Card
           examName="simak ui"
           examType="ui"
+          link="simak"
           session={5}
           duration={2}
           totalQuestion={100}
@@ -23,6 +24,7 @@ function Features() {
         />
         <Card
           examName="um ugm"
+          link="umugm"
           examType="ugm"
           session={5}
           duration={2}
@@ -32,6 +34,7 @@ function Features() {
         <Card
           examName="utbk"
           examType="utbk"
+          link="utbk"
           session={7}
           duration={1.2}
           totalQuestion={120}

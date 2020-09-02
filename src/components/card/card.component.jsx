@@ -4,7 +4,15 @@ import ButtonPulsate from '../button-pulsate/button-pulsate.component';
 
 import './card.styles.scss';
 
-function Card({ examName, examType, session, duration, totalQuestion, price }) {
+function Card({
+  examName,
+  examType,
+  session,
+  duration,
+  totalQuestion,
+  price,
+  link
+}) {
   return (
     <div className="card">
       <div className="card__side card__side--front">
@@ -30,7 +38,7 @@ function Card({ examName, examType, session, duration, totalQuestion, price }) {
             <p className="card__price-only">Only</p>
             <p className="card__price-value">Rp.{price}</p>
           </div>
-          <ButtonPulsate link={`/tryout`}>Ikuti ujian</ButtonPulsate>
+          <ButtonPulsate link={`/tryout/${link}`}>Ikuti ujian</ButtonPulsate>
         </div>
       </div>
     </div>
