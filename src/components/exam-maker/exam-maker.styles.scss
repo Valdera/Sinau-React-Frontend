@@ -1,0 +1,43 @@
+@import '../../sass/main.scss';
+
+.exammaker {
+    display: flex;
+
+    &__make {
+        padding-left: 3rem;
+        padding-top: 3rem;
+        flex: 0 0 60%;
+
+        &-title {
+            font-family: Poppins;
+            color: $color-grey-dark-2;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+    }
+
+    &__form {
+        border-radius: 20px;
+        border: 2px solid $color-grey-dark-2;
+        padding: 3rem;
+        height: 65rem;
+    }
+
+    &__seeker {
+        padding-top: 3rem;
+        padding-left: 3rem;
+
+        flex: 0 0 32%;
+    }
+
+    &__seeker-form {
+        border-radius: 20px;
+        border: 2px solid $color-grey-dark-2;
+        padding: 3rem;
+        height: 65rem;
+    }
+
+    &__button {
+        margin-top: 3rem;
+    }
+}

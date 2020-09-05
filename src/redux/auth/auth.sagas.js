@@ -18,7 +18,9 @@ import {
 import {
   signIn,
   signUp,
-  forgotPassword
+  forgotPassword,
+  deleteMe,
+  updateMe
 } from '../../database/api/auth.request';
 
 //* WORKERS
@@ -60,11 +62,34 @@ function* workerSignIn({ payload }) {
 function* workerForgotPassword({ payload }) {
   try {
     const message = yield forgotPassword(payload);
-    console.log(message);
     yield put(forgotPasswordSuccess(message));
   } catch (err) {
     alert(err.response.data.message);
     yield put(forgotPasswordFailure(err));
+  }
+}
+
+function* workerUpdateMe({ payload }) {
+  try {
+    const jwt = new Cookies();
+    yield jwt.get('jwt', { path: '/' });
+    const user = yield updateMe({ jwt: jwt.cookies.jwt, updatedData: payload });
+    yield put(updateMeSuccess(user));
+  } catch (err) {
+    alert(err.response.data.message);
+    yield put(updateMeFailure(err));
+  }
+}
+
+function* workerDeleteMe() {
+  try {
+    const jwt = new Cookies();
+    yield jwt.get('jwt', { path: '/' });
+    yield deleteMe(jwt.cookies.jwt);
+    yield put(deleteMeSuccess());
+  } catch (err) {
+    alert(err.response.data.message);
+    yield put(deleteMeFailure(err));
   }
 }
 
@@ -85,11 +110,21 @@ function* watchForgotPasswordStart() {
   yield takeLatest(AuthActionTypes.FORGOT_PASSWORD_START, workerForgotPassword);
 }
 
+function* watchUpdateMeStart() {
+  yield takeLatest(AuthActionTypes.UPDATE_ME_START, workerUpdateMe);
+}
+
+function* watchDeleteMeStart() {
+  yield takeLatest(AuthActionTypes.DELETE_ME_START, workerDeleteMe);
+}
+
 export function* authSagas() {
   yield all([
     call(watchSignInStart),
     call(watchSignUpStart),
     call(watchSignOutStart),
-    call(watchForgotPasswordStart)
+    call(watchForgotPasswordStart),
+    call(watchUpdateMeStart),
+    call(watchDeleteMeStart)
   ]);
 }

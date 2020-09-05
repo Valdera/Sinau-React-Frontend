@@ -10,6 +10,7 @@ import ExamPage from './pages/exampage/exampage.component';
 import AboutPage from './pages/aboutpage/aboutpage.component';
 import ProfilePage from './pages/profilepage/profilepage.component';
 import ErrorPage from './pages/errorpage/errorpage.component';
+import AdminPage from './pages/adminpage/adminpage.component';
 
 import './App.scss';
 
@@ -32,6 +33,18 @@ class App extends Component {
           />
           <Route exact path="/about-us" component={AboutPage} />
           <Route exact path="/profile" component={ProfilePage} />
+          <Route
+            path="/admin"
+            render={() => {
+              const page =
+                currentUser.role === 'admin' ? (
+                  <AdminPage />
+                ) : (
+                  <ErrorPage>You are not authorized</ErrorPage>
+                );
+              return page;
+            }}
+          />
           <Route
             path="/:errorid"
             render={() => <ErrorPage>Invalid Url</ErrorPage>}

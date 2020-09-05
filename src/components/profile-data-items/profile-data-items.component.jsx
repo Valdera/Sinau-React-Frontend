@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { ReactComponent as WriteIcon } from '../../assets/icon-write.svg';
 import { ReactComponent as CorrectIcon } from '../../assets/icon-correct.svg';
 import ProfileDataSelect from '../profile-data-select/profile-data-select.component';
+import { connect } from 'react-redux';
+import { updateMeStart } from '../../redux/auth/auth.actions';
+
+const allowedUppercase = ['majors'];
 
 class ProfileDataItem extends Component {
   constructor(props) {
@@ -13,12 +17,19 @@ class ProfileDataItem extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
     const { value } = this.props;
     this.setState({
       value
+    });
+  }
+
+  handleInputChange(evt) {
+    this.setState({
+      value: evt.target.value
     });
   }
 
@@ -30,10 +41,11 @@ class ProfileDataItem extends Component {
 
   async handleSubmit() {
     const { value } = this.state;
-    const { data } = this.props;
+    const { data, updateMeStart } = this.props;
     const updateData = {
       [data]: value
     };
+    await updateMeStart(updateData);
     this.setState({
       change: !this.state.change
     });
@@ -49,7 +61,12 @@ class ProfileDataItem extends Component {
     const { type, data, label, ...otherProps } = this.props;
     const input =
       type === 'text' ? (
-        <input type="text" placeholder={value} className="profiledata__input" />
+        <input
+          type="text"
+          placeholder={value}
+          className="profiledata__input"
+          onChange={this.handleInputChange}
+        />
       ) : (
         <ProfileDataSelect
           handleChange={this.handleChange}
@@ -60,7 +77,15 @@ class ProfileDataItem extends Component {
     return (
       <div className="profiledata__item">
         <p>{label} :</p>
-        {change ? input : <span>{value}</span>}
+        {change ? (
+          input
+        ) : (
+          <span>
+            {typeof value === 'string' && allowedUppercase.includes(data)
+              ? value.toUpperCase()
+              : value}
+          </span>
+        )}
         <div className="profiledata__change">
           {change ? (
             <CorrectIcon
@@ -79,4 +104,8 @@ class ProfileDataItem extends Component {
   }
 }
 
-export default ProfileDataItem;
+const mapDispatchToProps = (dispatch) => ({
+  updateMeStart: (updateData) => dispatch(updateMeStart(updateData))
+});
+
+export default connect(null, mapDispatchToProps)(ProfileDataItem);

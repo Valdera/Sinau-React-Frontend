@@ -7,7 +7,7 @@ function ProfileBar() {
   return (
     <Link to="/profile" className="profile">
       <img src={`${__dirname}user-test.png`} alt="" className="profile__img" />
-      <span className="profile__name">Valdera</span>
+      <span className="profile__name">Profile</span>
     </Link>
   );
 }

@@ -7,16 +7,16 @@ import { fetchExamsStart } from '../../redux/exam/exam.actions';
 import './tryoutpage.styles.scss';
 
 class TryoutPage extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { fetchExamsStart } = this.props;
-    fetchExamsStart();
+    await fetchExamsStart();
   }
 
   render() {
     const { match } = this.props;
     return (
       <div>
-        <Route path={`${match.path}`} component={TryoutOverview} />
+        <Route path={`${match.path}`} render={() => <TryoutOverview />} />
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../components/navbar/navbar.component';
 import { ReactComponent as ProfileSvg } from '../../assets/undraw_profile.svg';
 import ProfileData from '../../components/profile-data/profile-data.component';
+import Overview from '../../components/overview/overview.component';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/auth/auth.selector';
 import { createStructuredSelector } from 'reselect';
@@ -22,6 +23,14 @@ function ProfilePage({ currentUser }) {
                   <ProfileSvg className="profilepage__info-svg" />
                 </div>
                 <ProfileData />
+              </div>
+              <div className="profilepage__overview">
+                <div className="u-center-text overview__title">
+                  <h2 className="heading-secondary heading-secondary--pink">
+                    ANALISIS TRYOUT
+                  </h2>
+                </div>
+                <Overview />
               </div>
             </div>
           </div>

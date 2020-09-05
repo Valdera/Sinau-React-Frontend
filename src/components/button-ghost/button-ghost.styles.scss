@@ -1,0 +1,30 @@
+@import '../../sass/main.scss';
+
+.button-ghost {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $color-secondary-4;
+    border-radius: 25px;
+    transition: all 0.3s;
+    color: $color-secondary-4;
+    height: 4rem;
+    width: 10rem;
+    font-family: Poppins;
+    // text-transform: uppercase;
+
+    &:hover {
+        transform: scale(1.05) translateY(-2px);
+        color: $color-grey-dark-2;
+        font-weight: bold;
+        box-shadow: 10px 10px 10px 0 #192d30;
+
+        background-color: $color-secondary-4;
+    }
+
+    &:active {
+        transform: scale(0.95) translateY(1px);
+
+    }
+}

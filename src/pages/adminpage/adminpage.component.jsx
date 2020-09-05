@@ -1,0 +1,28 @@
+import React, { Component } from 'react';
+import Navbar from '../../components/navbar/navbar.component';
+import ExamMaker from '../../components/exam-maker/exam-maker.component';
+import QuestionMaker from '../../components/question-maker/question-maker.component';
+
+import './adminpage.styles.scss';
+
+class AdminPage extends Component {
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <div className="admin--background">
+          <div className="admin">
+            <div className="admin__exam">
+              <ExamMaker />
+            </div>
+            <div className="admin__question">
+              <QuestionMaker />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default AdminPage;

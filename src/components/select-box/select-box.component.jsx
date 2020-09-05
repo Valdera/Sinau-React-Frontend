@@ -33,6 +33,17 @@ class SelectBox extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.examId !== prevProps.match.params.examId) {
+      const { exam, changeCurrentPaket } = this.props;
+      this.setState({
+        value: exam.exams[0]
+      });
+
+      changeCurrentPaket(exam.exams[0]);
+    }
+  }
+
   componentDidMount() {
     const { exam, changeCurrentPaket } = this.props;
     this.setState({

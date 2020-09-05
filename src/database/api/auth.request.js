@@ -52,5 +52,10 @@ export const updateMe = async ({ jwt, updatedData }) => {
 };
 
 export const deleteMe = async (jwt) => {
-  await axios.delete(`${url}/api/users/deleteMe`);
+  const data = await axios.delete(`${url}/api/users/deleteMe`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`
+    }
+  });
+  return data;
 };

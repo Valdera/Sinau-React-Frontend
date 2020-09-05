@@ -2,6 +2,7 @@ import { ExamActionTypes } from './exam.types';
 
 const INITIAL_STATE = {
   exams: null,
+  examsArr: null,
   isFetching: false,
   errorMessage: undefined
 };
@@ -20,6 +21,7 @@ const examReducer = (state = INITIAL_STATE, action) => {
         errorMessage: null,
         exams: action.payload
       };
+
     case ExamActionTypes.FETCH_EXAMS_FAILURE:
       return {
         ...state,

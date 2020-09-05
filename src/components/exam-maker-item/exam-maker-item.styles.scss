@@ -1,0 +1,20 @@
+@import '../../sass/main.scss';
+
+.exammaker__item {
+    font-family: Poppins;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+
+    & input {
+        border-radius: 10px;
+        padding: .7rem;
+        font-size: 1.6rem;
+        color: $color-grey-dark-2;
+        border: 2px solid $color-secondary-4;
+        transition: all .2s;
+    }
+
+    & input:focus {
+        border: 2px solid #55c57a
+    }
+}

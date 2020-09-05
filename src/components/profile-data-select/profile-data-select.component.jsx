@@ -30,7 +30,9 @@ class ProfileDataSelect extends Component {
     const { active } = this.state;
     return (
       <div className="profiledata__select" onClick={this.handleClick}>
-        {currentValue}{' '}
+        {typeof currentValue === 'string'
+          ? currentValue.toUpperCase()
+          : currentValue}{' '}
         <ArrowDown
           className={`profiledata__select-arrow ${
             active ? 'profiledata__select-arrow-up' : ''
@@ -42,12 +44,14 @@ class ProfileDataSelect extends Component {
               if (currentValue !== value) {
                 return (
                   <div
+                    key={`select__${value}`}
                     className="profiledata__select-items"
                     onClick={(e) => this.handleClickItem(e, value)}>
-                    {value}
+                    {typeof value === 'string' ? value.toUpperCase() : value}
                   </div>
                 );
               }
+              return '';
             })}
           </div>
         ) : (
