@@ -31,7 +31,7 @@ class ProfileDataItem extends Component {
   async handleSubmit() {
     const { value } = this.state;
     const { data } = this.props;
-    updateData = {
+    const updateData = {
       [data]: value
     };
     this.setState({
