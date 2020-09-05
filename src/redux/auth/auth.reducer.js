@@ -32,6 +32,20 @@ const authReducer = (state = INITIAL_STATE, action) => {
         message: action.payload,
         error: null
       };
+    case AuthActionTypes.UPDATE_ME_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload,
+        error: null
+      };
+    case AuthActionTypes.DELETE_ME_SUCCESS:
+      return {
+        ...state,
+        currentUser: null,
+        error: null
+      };
+    case AuthActionTypes.UPDATE_ME_FAILURE:
+    case AuthActionTypes.DELETE_ME_FAILURE:
     case AuthActionTypes.EMAIL_SIGN_UP_FAILURE:
     case AuthActionTypes.FORGOT_PASSWORD_FAILURE:
     case AuthActionTypes.SIGN_IN_FAILURE:

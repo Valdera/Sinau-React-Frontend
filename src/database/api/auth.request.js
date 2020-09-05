@@ -40,3 +40,17 @@ export const forgotPassword = async ({ emailReset }) => {
   });
   return data.data.message;
 };
+
+export const updateMe = async ({ jwt, updatedData }) => {
+  const data = await axios.patch(`${url}/api/users/updateMe`, updatedData, {
+    headers: {
+      Authorization: `Bearer ${jwt}`
+    }
+  });
+  const user = data.data.data.user;
+  return user;
+};
+
+export const deleteMe = async (jwt) => {
+  await axios.delete(`${url}/api/users/deleteMe`);
+};

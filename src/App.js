@@ -7,6 +7,10 @@ import HomePage from './pages/homepage/homepage.component';
 import TryOutPage from './pages/tryoutpage/tryoutpage.component';
 import LoginPage from './pages/loginpage/loginpage.component';
 import ExamPage from './pages/exampage/exampage.component';
+import AboutPage from './pages/aboutpage/aboutpage.component';
+import ProfilePage from './pages/profilepage/profilepage.component';
+import ErrorPage from './pages/errorpage/errorpage.component';
+
 import './App.scss';
 
 class App extends Component {
@@ -25,6 +29,12 @@ class App extends Component {
           <Route
             path="/exam/:examId/:examSlug/:session/:number"
             component={ExamPage}
+          />
+          <Route exact path="/about-us" component={AboutPage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route
+            path="/:errorid"
+            render={() => <ErrorPage>Invalid Url</ErrorPage>}
           />
         </Switch>
       </div>

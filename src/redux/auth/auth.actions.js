@@ -66,3 +66,30 @@ export const signOutFailure = (error) => ({
   type: AuthActionTypes.SIGN_OUT_FAILURE,
   payload: error
 });
+
+export const updateMeStart = (updatedData) => ({
+  type: AuthActionTypes.UPDATE_ME_START,
+  payload: updatedData
+});
+
+export const updateMeSuccess = (updatedUser) => ({
+  type: AuthActionTypes.UPDATE_ME_SUCCESS,
+  payload: updatedUser
+});
+
+export const updateMeFailure = (error) => ({
+  type: AuthActionTypes.UPDATE_ME_FAILURE,
+  payload: error
+});
+
+export const deleteMeStart = () => ({
+  type: AuthActionTypes.DELETE_ME_START
+});
+
+export const deleteMeSuccess = () => ({
+  type: AuthActionTypes.DELETE_ME_SUCCESS
+});
+
+export const deleteMeFailure = () => ({
+  type: AuthActionTypes.DELETE_ME_FAILURE
+});

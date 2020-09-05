@@ -2,6 +2,10 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { AuthActionTypes } from './auth.types';
 import Cookies from 'universal-cookie';
 import {
+  updateMeSuccess,
+  updateMeFailure,
+  deleteMeSuccess,
+  deleteMeFailure,
   signInSuccess,
   signInFailure,
   signOutSuccess,
@@ -56,6 +60,7 @@ function* workerSignIn({ payload }) {
 function* workerForgotPassword({ payload }) {
   try {
     const message = yield forgotPassword(payload);
+    console.log(message);
     yield put(forgotPasswordSuccess(message));
   } catch (err) {
     alert(err.response.data.message);

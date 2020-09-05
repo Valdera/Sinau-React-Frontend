@@ -1,0 +1,61 @@
+@import '../../sass/main.scss';
+
+.profiledata__select {
+    position: relative;
+    border: $color-grey-dark-2 .1rem solid;
+    cursor: pointer;
+    padding: 0 .7rem;
+    height: 2.9rem;
+    width: 17rem;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    animation: popUp .5s ease-out;
+
+    &-arrow {
+        margin-left: auto;
+        height: 1.3rem;
+        transition: all .3s;
+    }
+
+    &-arrow-up {
+        transform: rotate(180deg);
+    }
+
+    &-box {
+        animation: moveInTop2 .3s;
+        position: absolute;
+        background: $color-white;
+        left: -1px;
+        ;
+        top: 3.2rem;
+        border: $color-grey-dark-2 .1rem solid;
+        border-radius: 10px;
+        z-index: 2;
+    }
+
+    &-items {
+        cursor: pointer;
+        width: 17rem;
+        padding: 0 .7rem;
+    }
+
+    &-items:hover {
+        background-color: $color-grey-light-1;
+
+    }
+
+    &-items:not(:last-child) {
+        border-bottom: .5px solid $color-grey-dark-2;
+    }
+
+    &-items:first-child {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    &-items:last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
