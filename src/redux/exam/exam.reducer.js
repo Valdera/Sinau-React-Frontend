@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   exams: null,
   examsArr: null,
   isFetching: false,
-  errorMessage: undefined
+  error: null
 };
 
 const examReducer = (state = INITIAL_STATE, action) => {
@@ -18,7 +18,7 @@ const examReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage: null,
+        error: null,
         exams: action.payload
       };
 
@@ -26,7 +26,7 @@ const examReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage: action.payload
+        error: action.payload
       };
     default:
       return state;

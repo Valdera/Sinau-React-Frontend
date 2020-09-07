@@ -3,7 +3,7 @@ import { ReactComponent as ArrowDown } from '../../assets/icon-arrow-bottom.svg'
 import SelectItems from '../select-items/select-items.component';
 import { connect } from 'react-redux';
 import { selectExam } from '../../redux/exam/exam.selector';
-import { changePaket } from '../../redux/location/location.action';
+import { changePaket } from '../../redux/location/location.actions';
 import ButtonSlide from '../../components/button-slide/button-slide.component';
 import { withRouter } from 'react-router-dom';
 import './select-box.styles.scss';

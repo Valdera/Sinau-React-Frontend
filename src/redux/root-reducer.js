@@ -7,6 +7,7 @@ import examReducer from './exam/exam.reducer';
 import directoryReducer from './directory/directory.reducer';
 import locationReducer from './location/location.reducer';
 import authReducer from './auth/auth.reducer';
+import questionReducer from './question/question.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   exam: examReducer,
   directory: directoryReducer,
   location: locationReducer,
-  auth: authReducer
+  auth: authReducer,
+  question: questionReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

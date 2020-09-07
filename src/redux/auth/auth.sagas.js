@@ -28,7 +28,6 @@ function* workerSignUp({ payload }) {
   try {
     const { user, token } = yield signUp(payload);
     const cookies = new Cookies();
-    console.log({ user, token });
     yield cookies.set('jwt', token, { path: '/' });
     yield put(emailSignUpSuccess(user));
   } catch (err) {

@@ -43,7 +43,6 @@ class ExamSeeker extends Component {
     const { exam, active } = this.state;
     const { exams } = this.props;
     const examArr = changeExamsToArray(exams);
-    console.log(exam);
 
     return (
       <div className="examseeker">

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './answers.styles.scss';
 
-const alphabet = ['a', 'b', 'c', 'd'];
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 function Answers({ answers, ...otherProps }) {
   return (
