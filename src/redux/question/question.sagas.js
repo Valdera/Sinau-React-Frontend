@@ -13,13 +13,13 @@ function* workerCreateExam({ payload }) {
   try {
     const jwt = new Cookies();
     yield jwt.get('jwt', { path: '/' });
-    const user = yield createQuestion({
+    yield createQuestion({
       jwt: jwt.cookies.jwt,
       formData: payload
     });
     yield put(createQuestionSuccess());
   } catch (err) {
-    yield put(createQuestionFailure(err.message));
+    yield put(createQuestionFailure(err));
   }
 }
 

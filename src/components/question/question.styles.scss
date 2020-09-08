@@ -11,12 +11,21 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 5rem;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     &__text {
         padding: 3rem 6.8rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__img {
+        &-box {
+            align-self: center;
+        }
     }
 
     &__answer--title {
@@ -52,8 +61,10 @@
     }
 
 
+
+
     &__text-label {
-        padding-left: 2rem;
+        padding-left: 1rem;
     }
 
     &__label {

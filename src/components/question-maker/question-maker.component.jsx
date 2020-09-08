@@ -7,6 +7,7 @@ import QuestionSeeker from '../question-seeker/question-seeker.component';
 import ButtonText from '../button-text/button-text.component';
 import ButtonBlock from '../button-block/button-block.component';
 import './question-maker.styles.scss';
+import { createQuestionStart } from '../../redux/question/question.actions';
 
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 
@@ -24,7 +25,8 @@ class QuestionMaker extends Component {
       questiontype: 'a',
       session: '',
       answerToBeDelete: 0,
-      image: null
+      image: null,
+      file: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleActive = this.handleActive.bind(this);
@@ -32,6 +34,7 @@ class QuestionMaker extends Component {
     this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.handleDeleteAnswer = this.handleDeleteAnswer.bind(this);
     this.handleImage = this.handleImage.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -74,7 +77,8 @@ class QuestionMaker extends Component {
 
   handleImage(event) {
     this.setState({
-      image: event.target.files[0]
+      image: event.target.files[0],
+      file: URL.createObjectURL(event.target.files[0])
     });
   }
 
@@ -91,15 +95,54 @@ class QuestionMaker extends Component {
     });
   }
 
+  async handleSubmit() {
+    const {
+      question,
+      usingMathJax,
+      exam,
+      answers,
+      correctAnswer,
+      questiontype,
+      session,
+      image
+    } = this.state;
+    const { createQuestionStart } = this.props;
+    const formData = new FormData();
+    formData.append('question', question);
+    formData.append('usingMathjax', usingMathJax);
+    formData.append('exam', exam._id);
+    formData.append('answers', answers);
+    formData.append('correctAnswer', correctAnswer);
+    formData.append('questiontype', questiontype);
+    formData.append('session', session);
+    if (image) {
+      formData.append('image', image);
+    }
+    console.log(formData.get('exam'));
+    await createQuestionStart(formData);
+    this.setState({
+      question: '',
+      usingMathJax: false,
+      answers: [],
+      answer: '',
+      correctAnswer: 0,
+      difficulty: 'easy',
+      questiontype: 'a',
+      session: '',
+      answerToBeDelete: 0,
+      image: null
+    });
+  }
+
   render() {
     const {
-      usingMathJax,
       answers,
       question,
       session,
       answer,
       exam,
-      active
+      active,
+      file
     } = this.state;
     const { exams } = this.props;
     const examArr = changeExamsToArray(exams);
@@ -113,6 +156,7 @@ class QuestionMaker extends Component {
               {examArr.map((exam) => (
                 <div
                   className="examseeker__item"
+                  key={`seek-${exam.examName}`}
                   onClick={(e) => this.handleClick(e, exam)}>
                   {exam.examName}
                 </div>
@@ -132,7 +176,7 @@ class QuestionMaker extends Component {
               className="question-maker__question"
               onChange={this.handleChange}></textarea>
             <div className="question-maker__type">
-              <label for="session">Choose a question session:</label>
+              <label htmlFor="session">Choose a question session:</label>
               <input
                 onChange={this.handleChange}
                 value={session}
@@ -164,7 +208,7 @@ class QuestionMaker extends Component {
               <label htmlFor="math-false">False</label>
             </div>
             <div className="question-maker__type">
-              <label for="questiontype">Choose a question type:</label>
+              <label htmlFor="questiontype">Choose a question type:</label>
               <select
                 name="questiontype"
                 id="questiontype"
@@ -176,7 +220,7 @@ class QuestionMaker extends Component {
               </select>
             </div>
             <div className="question-maker__type">
-              <label for="difficulty">Choose a difficulty:</label>
+              <label htmlFor="difficulty">Choose a difficulty:</label>
               <select
                 name="difficulty"
                 onChange={this.handleChange}
@@ -192,7 +236,9 @@ class QuestionMaker extends Component {
               <input type="file" name="image" onChange={this.handleImage} />
             </div>
 
-            <div className="question-maker__submit-question">
+            <div
+              className="question-maker__submit-question"
+              onClick={this.handleSubmit}>
               <ButtonBlock>Submit</ButtonBlock>
             </div>
           </div>
@@ -212,7 +258,7 @@ class QuestionMaker extends Component {
               </div>
             </div>
 
-            <label for="correctAnswer">Choose a Right answer:</label>
+            <label htmlFor="correctAnswer">Choose a Right answer:</label>
             <select
               onChange={this.handleChange}
               name="correctAnswer"
@@ -225,7 +271,7 @@ class QuestionMaker extends Component {
               ))}
             </select>
 
-            <label for="answerToBeDelete">
+            <label htmlFor="answerToBeDelete">
               Choose an answer to be deleted:
             </label>
             <select
@@ -233,10 +279,9 @@ class QuestionMaker extends Component {
               name="answerToBeDelete"
               id="answerToBeDelete">
               {answers.map((answer, id) => (
-                <option value={id}>{`${alphabet[id]} - ${answer.slice(
-                  0,
-                  70
-                )}`}</option>
+                <option key={`${answer}`} value={id}>{`${
+                  alphabet[id]
+                } - ${answer.slice(0, 70)}`}</option>
               ))}
             </select>
             <div onClick={this.handleDeleteAnswer}>
@@ -248,7 +293,11 @@ class QuestionMaker extends Component {
         <div className="question-maker__show">
           <h1 className="exammaker__make-title">Question Seeker 1.0</h1>
           <div className="question-seeker">
-            <QuestionSeeker question={`${question}`} answers={answers} />
+            <QuestionSeeker
+              question={`${question}`}
+              file={file ? file : null}
+              answers={answers}
+            />
           </div>
         </div>
       </div>
@@ -260,4 +309,8 @@ const mapStateToProps = createStructuredSelector({
   exams: selectExamItems
 });
 
-export default connect(mapStateToProps)(QuestionMaker);
+const mapDispatchToProps = (dispatch) => ({
+  createQuestionStart: (formData) => dispatch(createQuestionStart(formData))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionMaker);

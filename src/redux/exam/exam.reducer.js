@@ -21,11 +21,20 @@ const examReducer = (state = INITIAL_STATE, action) => {
         error: null,
         exams: action.payload
       };
-
     case ExamActionTypes.FETCH_EXAMS_FAILURE:
       return {
         ...state,
         isFetching: false,
+        error: action.payload
+      };
+    case ExamActionTypes.CREATE_EXAM_SUCCESS:
+      return {
+        ...state,
+        error: null
+      };
+    case ExamActionTypes.CREATE_EXAM_FAILURE:
+      return {
+        ...state,
         error: action.payload
       };
     default:

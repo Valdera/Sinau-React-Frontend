@@ -52,6 +52,7 @@ class ExamSeeker extends Component {
             <div className="examseeker__box">
               {examArr.map((exam) => (
                 <div
+                  key={`examseeker-${exam.examName}`}
                   className="examseeker__item"
                   onClick={(e) => this.handleClick(e, exam)}>
                   {exam.examName}
